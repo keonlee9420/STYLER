@@ -11,6 +11,6 @@ inflect==4.1.0
 g2p-en==2.1.0
 tensorboard==2.2.2
 pysptk==0.1.18
-tensorflow==2.3.0
+tensorflow==2.4.0
 python_speech_features==0.6
 pandas==1.2.3
