@@ -11,6 +11,7 @@ In our [paper](https://arxiv.org/abs/2103.09474), we propose STYLER, a non-autor
 
 **Abstract:** Previous works on neural text-to-speech (TTS) have been addressed on limited speed in training and inference time, robustness for difficult synthesis conditions, expressiveness, and controllability. Although several approaches resolve some limitations, there has been no attempt to solve all weaknesses at once. In this paper, we propose STYLER, an expressive and controllable TTS framework with high-speed and robust synthesis. Our novel audio-text aligning method called Mel Calibrator and excluding autoregressive decoding enable rapid training and inference and robust synthesis on unseen data. Also, disentangled style factor modeling under supervision enlarges the controllability in synthesizing process leading to expressive TTS. On top of it, a novel noise modeling pipeline using domain adversarial training and Residual Decoding empowers noise-robust style transfer, decomposing the noise without any additional label. Various experiments demonstrate that STYLER is more effective in speed and robustness than expressive TTS with autoregressive decoding and more expressive and controllable than reading style non-autoregressive TTS. Synthesis samples and experiment results are provided via our [demo page](https://keonlee9420.github.io/STYLER-Demo/), and [code](https://github.com/keonlee9420/STYLER) is available publicly.
 
+
 # Dependencies
 
 Please install the python dependencies given in `requirements.txt`.
@@ -107,13 +108,13 @@ python3 preprocess_noisy.py --refs
 The following command will synthesize all combinations of texts in `data/sentences.py` and audios in `hp.ref_audio_dir`.
 
 ```bash
-python synthesize.py --ckpt CHECKPOINT_PATH
+python3 synthesize.py --ckpt CHECKPOINT_PATH
 ```
 
 Or you can specify single reference audio in `hp.ref_audio_dir` as follows.
 
 ```bash
-python synthesize.py --ckpt CHECKPOINT_PATH --ref_name AUDIO_FILENAME
+python3 synthesize.py --ckpt CHECKPOINT_PATH --ref_name AUDIO_FILENAME
 ```
 
 Also, there are several useful options.
@@ -123,7 +124,7 @@ Also, there are several useful options.
 3. `--cont` will generate the samples as the `Style Factor Control` section on our [demo page](https://keonlee9420.github.io/STYLER-Demo/).
 
    ```bash
-   python synthesize.py --ckpt CHECKPOINT_PATH --cont --r1 AUDIO_FILENAME_1 --r2 AUDIO_FILENAME_1
+   python3 synthesize.py --ckpt CHECKPOINT_PATH --cont --r1 AUDIO_FILENAME_1 --r2 AUDIO_FILENAME_1
    ```
 
    Note that `--cont` option is only working on preprocessed data. In detail, the audios' name should have the same format as VCTK dataset (e.g., p323_229), and the preprocessed data must be existing in `hp.preprocessed_path`.
@@ -164,6 +165,17 @@ Here are some logging views of the model training on VCTK for 560k steps.
         <img src="./figs/spker_embed_tsne.png" width="70%">
     </p>
 4. Currently, `preprocess.py` divides the dataset into two subsets: train and validation set. If you need other sets, such as a test set, the only thing to do is modifying the text files (`train.txt` or `val.txt`) in `hp.preprocessed_path/`.
+
+# Citation
+If you would like to use or refer to this implementation, please cite our paper with the repo.
+```bash
+@article{lee2021styler,
+  title={STYLER: Style Modeling with Rapidity and Robustness via SpeechDecomposition for Expressive and Controllable Neural Text to Speech},
+  author={Lee, Keon and Park, Kyumin and Kim, Daeyoung},
+  journal={arXiv preprint arXiv:2103.09474},
+  year={2021}
+}
+```
 
 # References
 
