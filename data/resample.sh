@@ -47,11 +47,27 @@ elif [[ ! -d $outdir ]]; then
     echo "$outdir already exists but is not a directory" 1>&2
 fi
 
-# Resample and Save at Outdir
+# Resample and Save at Outdir (in a single dir independent how original files are in their subdirs)
 for file_indir in $(find $datapath -name "*.wav"); do
     ((i=i+1))
     filename="${file_indir/".wav"/""}"
     file_outdir="$outdir/${filename##*/}.wav"
+    run_with_lock resample $file_indir $file_outdir
+    echo "$((i-d))/$i [ PASSED]: $file_outdir"
+done
+
+# Resample and Save at Outdir (in the same subdir structure where the original files are)
+for file_indir in $(find $datapath -name "*.wav"); do
+    ((i=i+1))
+    filename="${file_indir/".wav"/""}"
+    arrIN=(${filename//// })
+    arrIN=(${arrIN[-1]//_/ })
+    subdirname=${arrIN[0]}
+    out_subdir="${outdir}/${subdirname}"
+    if [[ ! -e $out_subdir ]]; then
+        mkdir -p $out_subdir
+    fi
+    file_outdir="$out_subdir/${filename##*/}.wav"
     run_with_lock resample $file_indir $file_outdir
     echo "$((i-d))/$i [ PASSED]: $file_outdir"
 done
