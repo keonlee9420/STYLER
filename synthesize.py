@@ -492,7 +492,7 @@ if __name__ == "__main__":
             print("\nSingle-inference")
             synthesize_with_reference((idx, 1), args.ref_name, args.noisy_input,
                                       os.path.join(hp.ref_audio_dir, args.ref_name+".wav"),
-                                      os.path.join(hp.ref_tg_dir, reference+".TextGrid"),
+                                      os.path.join(hp.ref_tg_dir, args.ref_name+".TextGrid"),
                                       args.speaker_id, args.inspection)
         else:
             print("\nMulti-inference")
