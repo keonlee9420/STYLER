@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from torch.autograd  import Function
 from collections import OrderedDict
 import numpy as np
+import copy
 
 import hparams as hp
 import utils
