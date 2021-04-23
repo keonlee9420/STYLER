@@ -52,6 +52,7 @@ def audioread(path, tg_path=None, norm=True, start=0, stop=None):
 # Funtion to write audio    
 def audiowrite(data, fs, destpath, norm=False):
     if norm:
+        eps = 1e-6
         rms = (data ** 2).mean() ** 0.5
         scalar = 10 ** (-25 / 10) / (rms+eps)
         data = data * scalar
