@@ -11,6 +11,8 @@ In our [paper](https://arxiv.org/abs/2103.09474), we propose STYLER, a non-autor
 
 **Abstract:** Previous works on neural text-to-speech (TTS) have been addressed on limited speed in training and inference time, robustness for difficult synthesis conditions, expressiveness, and controllability. Although several approaches resolve some limitations, there has been no attempt to solve all weaknesses at once. In this paper, we propose STYLER, an expressive and controllable TTS framework with high-speed and robust synthesis. Our novel audio-text aligning method called Mel Calibrator and excluding autoregressive decoding enable rapid training and inference and robust synthesis on unseen data. Also, disentangled style factor modeling under supervision enlarges the controllability in synthesizing process leading to expressive TTS. On top of it, a novel noise modeling pipeline using domain adversarial training and Residual Decoding empowers noise-robust style transfer, decomposing the noise without any additional label. Various experiments demonstrate that STYLER is more effective in speed and robustness than expressive TTS with autoregressive decoding and more expressive and controllable than reading style non-autoregressive TTS. Synthesis samples and experiment results are provided via our [demo page](https://keonlee9420.github.io/STYLER-Demo/), and [code](https://github.com/keonlee9420/STYLER) is available publicly.
 
+# Pretrained Models
+You can download [pretrained models](https://drive.google.com/drive/folders/19Po6EWYFICmPY594zj5NzKWvcvZp-TlM?usp=sharing).
 
 # Dependencies
 
@@ -169,11 +171,13 @@ Here are some logging views of the model training on VCTK for 560k steps.
 # Citation
 If you would like to use or refer to this implementation, please cite our paper with the repo.
 ```bash
-@article{lee2021styler,
-  title={STYLER: Style Modeling with Rapidity and Robustness via SpeechDecomposition for Expressive and Controllable Neural Text to Speech},
-  author={Lee, Keon and Park, Kyumin and Kim, Daeyoung},
-  journal={arXiv preprint arXiv:2103.09474},
-  year={2021}
+@inproceedings{lee21h_interspeech,
+  author={Keon Lee and Kyumin Park and Daeyoung Kim},
+  title={{STYLER: Style Factor Modeling with Rapidity and Robustness via Speech Decomposition for Expressive and Controllable Neural Text to Speech}},
+  year=2021,
+  booktitle={Proc. Interspeech 2021},
+  pages={4643--4647},
+  doi={10.21437/Interspeech.2021-838}
 }
 ```
 
